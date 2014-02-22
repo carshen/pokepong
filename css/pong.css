@@ -1,0 +1,15 @@
+body {
+	background: black;
+	font-family: 'Inconsolata', sans-serif;
+}
+#canvas-container {
+	margin-left:auto;
+	margin-right:auto;
+	width:1000px;
+	border-style:solid;
+	border-color:white;
+}
+
+#background-img {
+	display:none;
+}
