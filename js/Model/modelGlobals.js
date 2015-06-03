@@ -1,4 +1,7 @@
-var hit = false;
+// TODO: separate global objects from global constants later??
+// TODO: install a linter
+// TODO: Game is part of model -- make the game an instance with some functions to call on it
+var g = {};
 
 // PONG BALL
 var BALL = {

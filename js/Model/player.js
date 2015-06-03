@@ -1,11 +1,11 @@
 function Player(x,y){
 	// inheritance
-	PaddleObject.call(this);
+	Paddle.call(this, x, y);
 
-	this.moveY = function(){
-			this.y = this.y + this.vy;
+	this.updateMovement = function() {
+		this.moveY();
 	}
-	
+
 	// renders the paddle
 	this.render = function(){
 		this.stayInBound();

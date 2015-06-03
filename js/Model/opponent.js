@@ -1,15 +1,19 @@
 function Opponent(x,y){
 	// inheritance
-	Paddle.call(this);
+	Paddle.call(this, x, y);
 
 	// state of the art AI
-	this.moveY = function(){
-		this.y = this.y + this.vy;
-		if (pball.y < this.y){
+	this.updateMovement = function() {
+		this.moveY();
+		this.followPlayer();
+	}
+	
+	this.followPlayer = function() {
+		if (g.pball.y < this.y){
 			this.vy = -OPPONENT_VY-Math.random()*2.75;
-		} else if (pball.y > this.y && pball.y < this.y+PADDLE.LENGTH){
+		} else if (g.pball.y > this.y && g.pball.y < this.y+PADDLE.LENGTH){
 			this.vy = 0;
-		} else if (pball.y > this.y){
+		} else if (g.pball.y > this.y){
 			this.vy = OPPONENT_VY+Math.random()*2.75;
 		}
 	}
@@ -25,3 +29,5 @@ function Opponent(x,y){
 		context.restore();
 	}
 }
+
+// TODO: deal with prototypes here and in player

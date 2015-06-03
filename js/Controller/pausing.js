@@ -1,21 +1,49 @@
 // PAUSING -- dude the function names are pre obvious
 function saveState(){
-	S_BALL_X = pball.x, S_BALL_Y = pball.y, S_BALL_VX = pball.vx, S_BALL_VY = pball.vy;
-	S_PADDLE_X = player.x, S_PADDLE_Y = player.y, S_PADDLE_VX = player.vx, S_PADDLE_VY = player.vy;
-	S_OPPONENT_VX = opponent.vx, S_OPPONENT_VY = opponent.vy, S_OPPONENT_X = opponent.x, S_OPPONENT_Y = opponent.y;
+	// save  ball state
+	S_BALL_X = g.pball.x;
+	S_BALL_Y = g.pball.y;
+	S_BALL_VX = g.pball.vx;
+	S_BALL_VY = g.pball.vy;
+
+	// save player state
+	S_PADDLE_X = g.player.x;
+	S_PADDLE_Y = g.player.y;
+	S_PADDLE_VX = g.player.vx;
+	S_PADDLE_VY = g.player.vy;
+
+	// save opponent state
+	S_OPPONENT_VX = g.opponent.vx;
+	S_OPPONENT_VY = g.opponent.vy;
+	S_OPPONENT_X = g.opponent.x;
+	S_OPPONENT_Y = g.opponent.y;
 }
 
 function pauseGame(){
-	pball.vx = 0;
-	pball.vy = 0;
-	player.vx = 0;
-	player.vy = 0;
-	opponent.vx = 0;
-	opponent.vy = 0;
+	g.pball.vx = 0;
+	g.pball.vy = 0;
+	g.player.vx = 0;
+	g.player.vy = 0;
+	g.opponent.vx = 0;
+	g.opponent.vy = 0;
 }
 
 function restoreState(){
-	pball.x = S_BALL_X, pball.y = S_BALL_Y, pball.vx = S_BALL_VX, pball.vy = S_BALL_VY;
-	player.x = S_PADDLE_X, player.y = S_PADDLE_Y, player.vx = S_PADDLE_VX, player.vy = S_PADDLE_VY;
-	opponent.vx = S_OPPONENT_VX, opponent.vy = S_OPPONENT_VY, opponent.x = S_OPPONENT_X, opponent.y = S_OPPONENT_Y;
+	// restore ball state
+	g.pball.x = S_BALL_X;
+	g.pball.y = S_BALL_Y;
+	g.pball.vx = S_BALL_VX;
+	g.pball.vy = S_BALL_VY;
+	
+	// restore player state
+	g.player.x = S_PADDLE_X;
+	g.player.y = S_PADDLE_Y;
+	g.player.vx = S_PADDLE_VX;
+	g.player.vy = S_PADDLE_VY;
+	
+	// restore opponent state
+	g.opponent.vx = S_OPPONENT_VX;
+	g.opponent.vy = S_OPPONENT_VY;
+	g.opponent.x = S_OPPONENT_X;
+	g.opponent.y = S_OPPONENT_Y;
 }

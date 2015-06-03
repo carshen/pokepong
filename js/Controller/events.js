@@ -3,22 +3,22 @@ function addGamePlayControls(){
 		switch (e.keyCode){
 			case 38: 
 				if (saved) break;
-				if (player.y< 0) {
-					player.y = 0;
+				if (g.player.y< 0) {
+					g.player.y = 0;
 				}
-				if (player.vy == 0){
-					player.vy = -PADDLE.MIN_SPEED;
-				} else if (player.vy > -PADDLE.MAX_SPEED) { 
-					player.vy -= PADDLE.ACCELERATION; 
+				if (g.player.vy == 0){
+					g.player.vy = -PADDLE.MIN_SPEED;
+				} else if (g.player.vy > -PADDLE.MAX_SPEED) { 
+					g.player.vy -= PADDLE.ACCELERATION; 
 				} 
 			break;
 			case 40:
 				if (saved) break;
-				if (player.y+player.vy > CANVAS_HEIGHT) player.y = CANVAS_HEIGHT - PADDLE.LENGTH - player.vy;
-				if (player.vy == 0){
-					player.vy = PADDLE.MIN_SPEED;
-				} else if (player.vy < PADDLE.MAX_SPEED) {
-					player.vy += PADDLE.ACCELERATION;
+				if (g.player.y+g.player.vy > CANVAS_HEIGHT) g.player.y = CANVAS_HEIGHT - PADDLE.LENGTH - g.player.vy;
+				if (g.player.vy == 0){
+					g.player.vy = PADDLE.MIN_SPEED;
+				} else if (g.player.vy < PADDLE.MAX_SPEED) {
+					g.player.vy += PADDLE.ACCELERATION;
 				}
 			break;
 		}
@@ -26,10 +26,10 @@ function addGamePlayControls(){
 	window.addEventListener('keyup', function(e) {
 		switch (e.keyCode){
 			case 38: 
-				player.vy = 0;
+				g.player.vy = 0;
 			break;
 			case 40:
-				player.vy = 0;
+				g.player.vy = 0;
 			break;
 		}
 	});
@@ -41,14 +41,14 @@ function addUIControls(){
 			case 32: //spacebar to begin
 				if (!started){ // --- start the game
 					resetToDefault();
-					opponent.score = 0;
-					player.score = 0;
+					g.opponent.score = 0;
+					g.player.score = 0;
 					gameLoop();
 					started = true;
 				} else if (!saved){ // restart the game
 					resetToDefault();
-					opponent.score = 0;
-					player.score = 0;
+					g.opponent.score = 0;
+					g.player.score = 0;
 				}
 				break;
 			case 27: // Esc to quit game

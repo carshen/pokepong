@@ -32,7 +32,7 @@ function startNextScreenIfAny(){
 	// start a new round if lost round
 	if (lostRound()){
 		updateLoseRound();
-		if (opponent.score >= WINS_NEEDED){
+		if (g.opponent.score >= WINS_NEEDED){
 			console.log("lose")
 			clearInterval(gameUpdate);
 			endGameScreen('lose');
@@ -40,7 +40,7 @@ function startNextScreenIfAny(){
 		}
 	} else if (winRound()){ // show win screen if won game
 		updateWinRound();
-		if (player.score >= WINS_NEEDED){
+		if (g.player.score >= WINS_NEEDED){
 			clearInterval(gameUpdate);
 			endGameScreen('win');
 			started = false;

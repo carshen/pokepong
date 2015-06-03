@@ -9,10 +9,10 @@ function runGame() {
 }
 
 // create the ball, two paddles, adds game controls and screen controls, then plays a sexy song
-function initGame(){
-	pball = new PBall(BALL.ORIG_X, BALL.ORIG_Y);
-	player = new Player(PADDLE.ORIG_X, PADDLE.ORIG_Y);
-	opponent = new Opponent(OPPONENT_X-PADDLE.WIDTH, PADDLE.ORIG_Y);
+function initGame() {
+	g.pball = new PBall(BALL.ORIG_X, BALL.ORIG_Y);
+	g.player = new Player(PADDLE.ORIG_X, PADDLE.ORIG_Y);
+	g.opponent = new Opponent(OPPONENT_X-PADDLE.WIDTH, PADDLE.ORIG_Y);
 
 	addUIControls();
 	addGamePlayControls();
@@ -31,8 +31,8 @@ function playExo(){
 
 // detects all collisions, updates movements, then sees if you need to change screens
 function update(){
-	detectPaddleCollision(pball, player);
-	detectOpponentCollision(pball, opponent);
+	detectPaddleCollision(g.pball, g.player);
+	detectOpponentCollision(g.pball, g.opponent);
 	detectWallCollision();
 	updateMovement();
 	startNextScreenIfAny();
@@ -45,9 +45,9 @@ function render(){
 	var context = canv.getContext("2d");
 	context.clearRect(0,0,CANVAS_WIDTH,CANVAS_HEIGHT);
 	drawBackground();
-	player.render();
-	pball.render();
-	opponent.render();
+	g.player.render();
+	g.pball.render();
+	g.opponent.render();
 	renderScore();
 }
 
@@ -61,7 +61,7 @@ function gameLoop(){
 
 // quits the game -- (but in the game you can restart after that by pressing space)
 function quitGame(){
-	console.log("Quitting game.")
+	console.log("Quitting.")
 	clearInterval(gameUpdate);
 	quitScreen();
 	started = false;
@@ -70,45 +70,45 @@ function quitGame(){
 // updates scores and positions after round is won
 function updateWinRound(){
 	resetToDefault();
-	player.score++;
+	g.player.score++;
 }
 
 // updates scores and positions after round is lost
 function updateLoseRound(){
-	opponent.score++;
-	pball.x = BALL.ORIG_X;
+	g.opponent.score++;
+	g.pball.x = BALL.ORIG_X;
 }
 
 /** MISCELLANEOUS HELPERS **/
 
 // returns true if past round was won
 function winRound(){
-	if (pball.x-BALL.RADIUS <= 0) return true;
+	if (g.pball.x-BALL.RADIUS <= 0) return true;
 }
 
 // returns true if past round was lost
 function lostRound(){
-	if (pball.x-BALL.RADIUS > CANVAS_WIDTH) return true;
+	if (g.pball.x-BALL.RADIUS > CANVAS_WIDTH) return true;
 }
 
 // resets paddle positions, ball position and speed
 function resetToDefault(){
-	pball.x = BALL.ORIG_X;
-	pball.y = BALL.ORIG_Y;
-	pball.vx = BALL.ORIG_VX;
-	pball.vy = BALL.ORIG_VY;
-	player.x = PADDLE.ORIG_X;
-	player.y = PADDLE.ORIG_Y;
-	opponent.x = OPPONENT_X;
-	opponent.y = PADDLE.ORIG_Y;
+	g.pball.x = BALL.ORIG_X;
+	g.pball.y = BALL.ORIG_Y;
+	g.pball.vx = BALL.ORIG_VX;
+	g.pball.vy = BALL.ORIG_VY;
+	g.player.x = PADDLE.ORIG_X;
+	g.player.y = PADDLE.ORIG_Y;
+	g.opponent.x = OPPONENT_X;
+	g.opponent.y = PADDLE.ORIG_Y;
 }
 
 // moves ball and paddles
 function updateMovement(){
-	pball.moveX();
-	pball.moveY();
-	player.moveY();
-	opponent.moveY();
+	g.pball.moveX();
+	g.pball.moveY();
+	g.player.updateMovement();
+	g.opponent.updateMovement();
 }
 
 // renders the score
@@ -118,8 +118,8 @@ function renderScore(){
 	context.save();
 	context.fillStyle = "blue";
 	context.font = "bold 30px Inconsolata";
-	context.fillText(opponent.score, 250 , 500);
-	context.fillText(player.score, 750, 500);
+	context.fillText(g.opponent.score, 250 , 500);
+	context.fillText(g.player.score, 750, 500);
 	context.restore();
 }
 

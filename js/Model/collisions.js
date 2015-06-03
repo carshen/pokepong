@@ -27,13 +27,13 @@ function detectOpponentCollision(pb, pd){
 
 function detectWallCollision(){
 	// ball wall collision
-	if (pball.y-BALL.RADIUS <= 0 || pball.y+BALL.RADIUS >= CANVAS_HEIGHT) {
-		pball.vy = -pball.vy;
+	if (g.pball.y-BALL.RADIUS <= 0 || g.pball.y+BALL.RADIUS >= CANVAS_HEIGHT) {
+		g.pball.vy = -g.pball.vy;
 	}
 	// paddle wall collision
-	if (player.y <= 0){
-		player.y = 0
-	} else if (player.y + PADDLE.LENGTH >= CANVAS_HEIGHT) {
-		player.y = CANVAS_HEIGHT - PADDLE.LENGTH;
+	if (g.player.y <= 0){
+		g.player.y = 0
+	} else if (g.player.y + PADDLE.LENGTH >= CANVAS_HEIGHT) {
+		g.player.y = CANVAS_HEIGHT - PADDLE.LENGTH;
 	}
 }
