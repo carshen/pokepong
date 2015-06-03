@@ -10,7 +10,7 @@ function runGame() {
 
 // create the ball, two paddles, adds game controls and screen controls, then plays a sexy song
 function initGame(){
-	pball = new PBall(BALL_ORIG_X, BALL_ORIG_Y);
+	pball = new PBall(BALL.ORIG_X, BALL.ORIG_Y);
 	paddle = new Paddle(PADDLE.ORIG_X, PADDLE.ORIG_Y);
 	opponent = new Opponent(OPPONENT_X-PADDLE.WIDTH, PADDLE.ORIG_Y);
 
@@ -76,27 +76,27 @@ function updateWinRound(){
 // updates scores and positions after round is lost
 function updateLoseRound(){
 	opponent.score++;
-	pball.x = BALL_ORIG_X;
+	pball.x = BALL.ORIG_X;
 }
 
 /** MISCELLANEOUS HELPERS **/
 
 // returns true if past round was won
 function winRound(){
-	if (pball.x-BALL_RADIUS <= 0) return true;
+	if (pball.x-BALL.RADIUS <= 0) return true;
 }
 
 // returns true if past round was lost
 function lostRound(){
-	if (pball.x-BALL_RADIUS > CANVAS_WIDTH) return true;
+	if (pball.x-BALL.RADIUS > CANVAS_WIDTH) return true;
 }
 
 // resets paddle positions, ball position and speed
 function resetToDefault(){
-	pball.x = BALL_ORIG_X;
-	pball.y = BALL_ORIG_Y;
-	pball.vx = BALL_ORIG_VX;
-	pball.vy = BALL_ORIG_VY;
+	pball.x = BALL.ORIG_X;
+	pball.y = BALL.ORIG_Y;
+	pball.vx = BALL.ORIG_VX;
+	pball.vy = BALL.ORIG_VY;
 	paddle.x = PADDLE.ORIG_X;
 	paddle.y = PADDLE.ORIG_Y;
 	opponent.x = OPPONENT_X;

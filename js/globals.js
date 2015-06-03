@@ -19,12 +19,14 @@ var S_OPPONENT_VY;
 var S_OPPONENT_X;
 var S_OPPONENT_Y;
 // PONG BALL
-var BALL_RADIUS = 10;
-var BALL_ORIG_VY = 0.3;
-var BALL_ORIG_VX = 8; // orig 8
-var BALL_ORIG_X = 75;
-var BALL_ORIG_Y = CANVAS_HEIGHT/2;
-var BALL_MAX_SPEED_Y = 18;
+var BALL = {
+	RADIUS: 10,
+	ORIG_VY: 0.3,
+	ORIG_VX: 8,
+	ORIG_X: 75,
+	ORIG_Y: CANVAS_HEIGHT/2,
+	MAX_SPEED_Y: 18,
+}
 var hit = false;
 // PADDLE
 var PADDLE = {

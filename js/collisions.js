@@ -1,25 +1,25 @@
 // COLLISIONS
 function detectPaddleCollision(pb, pd){
-	if (((pb.x + BALL_RADIUS) >= pd.x) && (pb.y+BALL_RADIUS >= pd.y && pb.y-BALL_RADIUS <= pd.y+PADDLE.LENGTH)){
-		if (pb.x + BALL_RADIUS <= pd.x+PADDLE.WIDTH/2){ // for ball to not bounce back when behind paddle
-			pb.vx = -1*BALL_ORIG_VX;
-			if (pb.vy < BALL_MAX_SPEED_Y){
+	if (((pb.x + BALL.RADIUS) >= pd.x) && (pb.y+BALL.RADIUS >= pd.y && pb.y-BALL.RADIUS <= pd.y+PADDLE.LENGTH)){
+		if (pb.x + BALL.RADIUS <= pd.x+PADDLE.WIDTH/2){ // for ball to not bounce back when behind paddle
+			pb.vx = -1*BALL.ORIG_VX;
+			if (pb.vy < BALL.MAX_SPEED_Y){
 				pb.vy = (pd.vy)*0.75+0.2;
 			} else {
-				pb.vy = BALL_MAX_SPEED_Y;
+				pb.vy = BALL.MAX_SPEED_Y;
 			}
 		}
 	}
 }
 
 function detectOpponentCollision(pb, pd){
-	if (((pb.x - BALL_RADIUS) <= pd.x+PADDLE.WIDTH/2) && (pb.y+BALL_RADIUS >= pd.y && pb.y-BALL_RADIUS <= pd.y+PADDLE.LENGTH)){
-		if (pb.x-BALL_RADIUS >= pd.x-PADDLE.WIDTH/2){
-			pb.vx = BALL_ORIG_VX;
-			if (pb.vy < BALL_MAX_SPEED_Y){
+	if (((pb.x - BALL.RADIUS) <= pd.x+PADDLE.WIDTH/2) && (pb.y+BALL.RADIUS >= pd.y && pb.y-BALL.RADIUS <= pd.y+PADDLE.LENGTH)){
+		if (pb.x-BALL.RADIUS >= pd.x-PADDLE.WIDTH/2){
+			pb.vx = BALL.ORIG_VX;
+			if (pb.vy < BALL.MAX_SPEED_Y){
 				pb.vy = (pd.vy)*0.75+0.2;
 			} else {
-				pb.vy = BALL_MAX_SPEED_Y;
+				pb.vy = BALL.MAX_SPEED_Y;
 			}
 		}
 	}
@@ -27,7 +27,7 @@ function detectOpponentCollision(pb, pd){
 
 function detectWallCollision(){
 	// ball wall collision
-	if (pball.y-BALL_RADIUS <= 0 || pball.y+BALL_RADIUS >= CANVAS_HEIGHT) {
+	if (pball.y-BALL.RADIUS <= 0 || pball.y+BALL.RADIUS >= CANVAS_HEIGHT) {
 		pball.vy = -pball.vy;
 	}
 	// paddle wall collision
