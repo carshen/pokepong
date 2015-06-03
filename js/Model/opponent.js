@@ -1,11 +1,7 @@
 function Opponent(x,y){
-	this.score = 0;
-	this.x = x;
-	this.y = y;
-	this.vx = 0;
-	this.vy = 0;
-	this.length = PADDLE.LENGTH;
-	this.width = PADDLE.WIDTH;
+	// inheritance
+	Paddle.call(this);
+
 	// state of the art AI
 	this.moveY = function(){
 		this.y = this.y + this.vy;
@@ -17,11 +13,7 @@ function Opponent(x,y){
 			this.vy = OPPONENT_VY+Math.random()*2.75;
 		}
 	}
-	// ensure opponent paddle doesn't leave canvas screen
-	this.stayInBound = function(){
-		if (this.y < 0) this.y = 0;
-		if (this.y + PADDLE.LENGTH > CANVAS_HEIGHT) this.y = CANVAS_HEIGHT - PADDLE.LENGTH;
-	}
+
 	// renders opponent paddle
 	this.render = function(){
 		this.stayInBound();

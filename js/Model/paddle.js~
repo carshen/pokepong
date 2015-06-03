@@ -1,19 +1,11 @@
-function Paddle(x,y){
-	this.score = 0;
-	this.x = x;
-	this.y = y;
-	this.vx = 0;
-	this.vy = 0;
-	this.length = PADDLE.LENGTH;
-	this.width = PADDLE.WIDTH;
+function Player(x,y){
+	// inheritance
+	PaddleObject.call(this);
+
 	this.moveY = function(){
 			this.y = this.y + this.vy;
 	}
-	// ensures paddle doesn't go outside the canvas screen
-	this.stayInBound = function(){
-		if (this.y < 0) this.y = 0;
-		if (this.y + PADDLE.LENGTH > CANVAS_HEIGHT) this.y = CANVAS_HEIGHT - PADDLE.LENGTH;
-	}
+	
 	// renders the paddle
 	this.render = function(){
 		this.stayInBound();

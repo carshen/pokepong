@@ -31,9 +31,9 @@ function detectWallCollision(){
 		pball.vy = -pball.vy;
 	}
 	// paddle wall collision
-	if (paddle.y <= 0){
-		paddle.y = 0
-	} else if (paddle.y + PADDLE.LENGTH >= CANVAS_HEIGHT) {
-		paddle.y = CANVAS_HEIGHT - PADDLE.LENGTH;
+	if (player.y <= 0){
+		player.y = 0
+	} else if (player.y + PADDLE.LENGTH >= CANVAS_HEIGHT) {
+		player.y = CANVAS_HEIGHT - PADDLE.LENGTH;
 	}
 }

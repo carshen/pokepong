@@ -17,8 +17,8 @@ function PBall(x,y){
 			this.vx = BALL.ORIG_VX;
 		}
 		// stay in bound for player's paddle
-		else if (this.x+BALL.RADIUS > paddle.x && this.y+BALL.RADIUS >= paddle.y && this.y-BALL.RADIUS <= paddle.y+PADDLE.LENGTH){
-			this.x = paddle.x - BALL.RADIUS;
+		else if (this.x+BALL.RADIUS > player.x && this.y+BALL.RADIUS >= player.y && this.y-BALL.RADIUS <= player.y+PADDLE.LENGTH){
+			this.x = player.x - BALL.RADIUS;
 			this.vx = -BALL.ORIG_VX;
 		}
 	}

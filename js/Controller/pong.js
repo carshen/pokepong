@@ -11,7 +11,7 @@ function runGame() {
 // create the ball, two paddles, adds game controls and screen controls, then plays a sexy song
 function initGame(){
 	pball = new PBall(BALL.ORIG_X, BALL.ORIG_Y);
-	paddle = new Paddle(PADDLE.ORIG_X, PADDLE.ORIG_Y);
+	player = new Player(PADDLE.ORIG_X, PADDLE.ORIG_Y);
 	opponent = new Opponent(OPPONENT_X-PADDLE.WIDTH, PADDLE.ORIG_Y);
 
 	addUIControls();
@@ -31,7 +31,7 @@ function playExo(){
 
 // detects all collisions, updates movements, then sees if you need to change screens
 function update(){
-	detectPaddleCollision(pball, paddle);
+	detectPaddleCollision(pball, player);
 	detectOpponentCollision(pball, opponent);
 	detectWallCollision();
 	updateMovement();
@@ -45,7 +45,7 @@ function render(){
 	var context = canv.getContext("2d");
 	context.clearRect(0,0,CANVAS_WIDTH,CANVAS_HEIGHT);
 	drawBackground();
-	paddle.render();
+	player.render();
 	pball.render();
 	opponent.render();
 	renderScore();
@@ -70,7 +70,7 @@ function quitGame(){
 // updates scores and positions after round is won
 function updateWinRound(){
 	resetToDefault();
-	paddle.score++;
+	player.score++;
 }
 
 // updates scores and positions after round is lost
@@ -97,8 +97,8 @@ function resetToDefault(){
 	pball.y = BALL.ORIG_Y;
 	pball.vx = BALL.ORIG_VX;
 	pball.vy = BALL.ORIG_VY;
-	paddle.x = PADDLE.ORIG_X;
-	paddle.y = PADDLE.ORIG_Y;
+	player.x = PADDLE.ORIG_X;
+	player.y = PADDLE.ORIG_Y;
 	opponent.x = OPPONENT_X;
 	opponent.y = PADDLE.ORIG_Y;
 }
@@ -107,7 +107,7 @@ function resetToDefault(){
 function updateMovement(){
 	pball.moveX();
 	pball.moveY();
-	paddle.moveY();
+	player.moveY();
 	opponent.moveY();
 }
 
@@ -119,7 +119,7 @@ function renderScore(){
 	context.fillStyle = "blue";
 	context.font = "bold 30px Inconsolata";
 	context.fillText(opponent.score, 250 , 500);
-	context.fillText(paddle.score, 750, 500);
+	context.fillText(player.score, 750, 500);
 	context.restore();
 }
 

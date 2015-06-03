@@ -1,0 +1,19 @@
+function Player(x,y){
+	// inheritance
+	Paddle.call(this);
+
+	this.moveY = function(){
+			this.y = this.y + this.vy;
+	}
+	
+	// renders the paddle
+	this.render = function(){
+		this.stayInBound();
+		var canv = document.getElementById("game-canvas");
+		var context = canv.getContext("2d");
+		context.save();
+		context.fillStyle="#CC66CC";
+		context.fillRect(this.x, this.y, PADDLE.WIDTH, PADDLE.LENGTH);
+		context.restore();
+	}
+}

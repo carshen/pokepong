@@ -40,7 +40,7 @@ function startNextScreenIfAny(){
 		}
 	} else if (winRound()){ // show win screen if won game
 		updateWinRound();
-		if (paddle.score >= WINS_NEEDED){
+		if (player.score >= WINS_NEEDED){
 			clearInterval(gameUpdate);
 			endGameScreen('win');
 			started = false;
