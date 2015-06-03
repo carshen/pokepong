@@ -4,15 +4,15 @@ function Paddle(x,y){
 	this.y = y;
 	this.vx = 0;
 	this.vy = 0;
-	this.length = PADDLE_LENGTH;
-	this.width = PADDLE_WIDTH;
+	this.length = PADDLE.LENGTH;
+	this.width = PADDLE.WIDTH;
 	this.moveY = function(){
 			this.y = this.y + this.vy;
 	}
 	// ensures paddle doesn't go outside the canvas screen
 	this.stayInBound = function(){
 		if (this.y < 0) this.y = 0;
-		if (this.y + PADDLE_LENGTH > CANVAS_HEIGHT) this.y = CANVAS_HEIGHT - PADDLE_LENGTH;
+		if (this.y + PADDLE.LENGTH > CANVAS_HEIGHT) this.y = CANVAS_HEIGHT - PADDLE.LENGTH;
 	}
 	// renders the paddle
 	this.render = function(){
@@ -21,7 +21,7 @@ function Paddle(x,y){
 		var context = canv.getContext("2d");
 		context.save();
 		context.fillStyle="#CC66CC";
-		context.fillRect(this.x, this.y, PADDLE_WIDTH, PADDLE_LENGTH);
+		context.fillRect(this.x, this.y, PADDLE.WIDTH, PADDLE.LENGTH);
 		context.restore();
 	}
 }

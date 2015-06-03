@@ -12,12 +12,12 @@ function PBall(x,y){
 	// ensures the ball doesn't overlap with the paddle
 	this.stayInBound = function(){
 		// stay in bound for opponent paddle
-		if (this.x - BALL_RADIUS < opponent.x + PADDLE_WIDTH && this.y+BALL_RADIUS >= opponent.y && this.y-BALL_RADIUS <= opponent.y+PADDLE_LENGTH){
-			this.x = opponent.x + PADDLE_WIDTH + BALL_RADIUS;
+		if (this.x - BALL_RADIUS < opponent.x + PADDLE.WIDTH && this.y+BALL_RADIUS >= opponent.y && this.y-BALL_RADIUS <= opponent.y+PADDLE.LENGTH){
+			this.x = opponent.x + PADDLE.WIDTH + BALL_RADIUS;
 			this.vx = BALL_ORIG_VX;
 		}
 		// stay in bound for player's paddle
-		else if (this.x+BALL_RADIUS > paddle.x && this.y+BALL_RADIUS >= paddle.y && this.y-BALL_RADIUS <= paddle.y+PADDLE_LENGTH){
+		else if (this.x+BALL_RADIUS > paddle.x && this.y+BALL_RADIUS >= paddle.y && this.y-BALL_RADIUS <= paddle.y+PADDLE.LENGTH){
 			this.x = paddle.x - BALL_RADIUS;
 			this.vx = -BALL_ORIG_VX;
 		}

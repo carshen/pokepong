@@ -7,18 +7,18 @@ function addGamePlayControls(){
 					paddle.y = 0;
 				}
 				if (paddle.vy == 0){
-					paddle.vy = -PADDLE_MIN_SPEED;
-				} else if (paddle.vy > -PADDLE_MAX_SPEED) { 
-					paddle.vy -= PADDLE_ACCELERATION; 
+					paddle.vy = -PADDLE.MIN_SPEED;
+				} else if (paddle.vy > -PADDLE.MAX_SPEED) { 
+					paddle.vy -= PADDLE.ACCELERATION; 
 				} 
 			break;
 			case 40:
 				if (saved) break;
-				if (paddle.y+paddle.vy > CANVAS_HEIGHT) paddle.y = CANVAS_HEIGHT - PADDLE_LENGTH - paddle.vy;
+				if (paddle.y+paddle.vy > CANVAS_HEIGHT) paddle.y = CANVAS_HEIGHT - PADDLE.LENGTH - paddle.vy;
 				if (paddle.vy == 0){
-					paddle.vy = PADDLE_MIN_SPEED;
-				} else if (paddle.vy < PADDLE_MAX_SPEED) {
-					paddle.vy += PADDLE_ACCELERATION;
+					paddle.vy = PADDLE.MIN_SPEED;
+				} else if (paddle.vy < PADDLE.MAX_SPEED) {
+					paddle.vy += PADDLE.ACCELERATION;
 				}
 			break;
 		}

@@ -11,8 +11,9 @@ function runGame() {
 // create the ball, two paddles, adds game controls and screen controls, then plays a sexy song
 function initGame(){
 	pball = new PBall(BALL_ORIG_X, BALL_ORIG_Y);
-	paddle = new Paddle(PADDLE_ORIG_X, PADDLE_ORIG_Y);
-	opponent = new Opponent(OPPONENT_X-PADDLE_WIDTH, PADDLE_ORIG_Y);
+	paddle = new Paddle(PADDLE.ORIG_X, PADDLE.ORIG_Y);
+	opponent = new Opponent(OPPONENT_X-PADDLE.WIDTH, PADDLE.ORIG_Y);
+
 	addUIControls();
 	addGamePlayControls();
 	playExo();
@@ -96,10 +97,10 @@ function resetToDefault(){
 	pball.y = BALL_ORIG_Y;
 	pball.vx = BALL_ORIG_VX;
 	pball.vy = BALL_ORIG_VY;
-	paddle.x = PADDLE_ORIG_X;
-	paddle.y = PADDLE_ORIG_Y;
+	paddle.x = PADDLE.ORIG_X;
+	paddle.y = PADDLE.ORIG_Y;
 	opponent.x = OPPONENT_X;
-	opponent.y = PADDLE_ORIG_Y;
+	opponent.y = PADDLE.ORIG_Y;
 }
 
 // moves ball and paddles
