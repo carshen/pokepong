@@ -14,6 +14,15 @@ function initGame() {
 	g.player = new Player(PADDLE.ORIG_X, PADDLE.ORIG_Y);
 	g.opponent = new Opponent(OPPONENT_X-PADDLE.WIDTH, PADDLE.ORIG_Y);
 
+	var canv = document.getElementById("game-canvas");
+	var context = canv.getContext("2d");
+
+	// TODO: handle the namespacing
+	playerui = new PlayerUI();
+	opponentui = new OpponentUI();
+	ballui = new BallUI();
+	objRend = new ObjectsRenderer(canv, context, playerui, opponentui, ballui);
+
 	addUIControls();
 	addGamePlayControls();
 	playExo();
@@ -45,9 +54,7 @@ function render(){
 	var context = canv.getContext("2d");
 	context.clearRect(0,0,CANVAS_WIDTH,CANVAS_HEIGHT);
 	drawBackground();
-	g.player.render();
-	g.pball.render();
-	g.opponent.render();
+	objRend.render();
 	renderScore();
 }
 

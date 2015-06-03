@@ -17,17 +17,6 @@ function Opponent(x,y){
 			this.vy = OPPONENT_VY+Math.random()*2.75;
 		}
 	}
-
-	// renders opponent paddle
-	this.render = function(){
-		this.stayInBound();
-		var canv = document.getElementById("game-canvas");
-		var context = canv.getContext("2d");
-		context.save();
-		context.fillStyle="#99FF66";
-		context.fillRect(this.x, this.y, PADDLE.WIDTH, PADDLE.LENGTH);
-		context.restore();
-	}
 }
 
 // TODO: deal with prototypes here and in player
