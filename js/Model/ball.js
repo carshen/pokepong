@@ -1,4 +1,4 @@
-function PBall(x,y){
+var PBall = function(x,y) {
 	this.x = x;
 	this.y = y;
 	this.vx = BALL.ORIG_VX;
@@ -49,4 +49,4 @@ function PBall(x,y){
 			}
 		}
 	}
-}
+};

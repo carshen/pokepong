@@ -27,16 +27,6 @@ function initGame() {
 	playExo();
 }
 
-// Growl by Exo
-function playExo(){
-	growl = new Audio('res/growl.mp3');
-	growl.addEventListener('ended', function(){
-		this.currentTime = 0;
-		this.play();
-	}, false);
-	growl.play();
-}
-
 // detects all collisions, updates movements, then sees if you need to change screens
 function update(){
 	detectPaddleCollision(g.pball, g.player);
