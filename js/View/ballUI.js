@@ -3,38 +3,37 @@ function BallUI() {
 	
 	this.render = function(){
 		this.ball.stayInBound();
-		var canv = document.getElementById("game-canvas");
-		var context = canv.getContext("2d");
-		context.save();
-		this.ball.rotate(context);
+		var cx = UI.context;
+		cx.save();
+		this.ball.rotate();
 
-		context.beginPath();
-		context.arc(this.ball.x, this.ball.y, BALL.RADIUS, 0, Math.PI, false)
-		context.closePath();
-		context.fillStyle='white';
-		context.fill();
+		cx.beginPath();
+		cx.arc(this.ball.x, this.ball.y, BALL.RADIUS, 0, Math.PI, false)
+		cx.closePath();
+		cx.fillStyle='white';
+		cx.fill();
 
-		context.beginPath();
-		context.arc(this.ball.x, this.ball.y, BALL.RADIUS, 0, Math.PI, true)
-		context.closePath();
-		context.fillStyle='red';
-		context.fill();
+		cx.beginPath();
+		cx.arc(this.ball.x, this.ball.y, BALL.RADIUS, 0, Math.PI, true)
+		cx.closePath();
+		cx.fillStyle='red';
+		cx.fill();
 
-		context.beginPath();
-		context.moveTo(this.ball.x-BALL.RADIUS, this.ball.y)
-		context.lineTo(this.ball.x+BALL.RADIUS, this.ball.y)
-		context.lineWidth = 2;
-		context.stroke()
+		cx.beginPath();
+		cx.moveTo(this.ball.x-BALL.RADIUS, this.ball.y)
+		cx.lineTo(this.ball.x+BALL.RADIUS, this.ball.y)
+		cx.lineWidth = 2;
+		cx.stroke()
 
-		context.beginPath();
-		context.arc(this.ball.x, this.ball.y, BALL.RADIUS*0.4, 0, 2*Math.PI, true)
-		context.fillStyle='black';
-		context.fill();
+		cx.beginPath();
+		cx.arc(this.ball.x, this.ball.y, BALL.RADIUS*0.4, 0, 2*Math.PI, true)
+		cx.fillStyle='black';
+		cx.fill();
 
-		context.beginPath();
-		context.arc(this.ball.x, this.ball.y, BALL.RADIUS*0.2, 0, 2*Math.PI, true)
-		context.fillStyle='white';
-		context.fill();
-		context.restore();
+		cx.beginPath();
+		cx.arc(this.ball.x, this.ball.y, BALL.RADIUS*0.2, 0, 2*Math.PI, true)
+		cx.fillStyle='white';
+		cx.fill();
+		cx.restore();
 	}
 }

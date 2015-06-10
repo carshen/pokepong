@@ -4,11 +4,10 @@ function OpponentUI() {
 	// renders opponent paddle
 	this.render = function(){
 		this.opponent.stayInBound();
-		var canv = document.getElementById("game-canvas");
-		var context = canv.getContext("2d");
-		context.save();
-		context.fillStyle="#99FF66";
-		context.fillRect(this.opponent.x, this.opponent.y, PADDLE.WIDTH, PADDLE.LENGTH);
-		context.restore();
+		var cx = UI.context;
+		cx.save();
+		cx.fillStyle="#99FF66";
+		cx.fillRect(this.opponent.x, this.opponent.y, PADDLE.WIDTH, PADDLE.LENGTH);
+		cx.restore();
 	}
 }

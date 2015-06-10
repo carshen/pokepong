@@ -23,28 +23,29 @@ function PBall(x,y){
 		}
 	}
 	// such software engineering skill
-	this.rotate = function(context){
+	this.rotate = function(){
+		var cx = UI.context;
 		if (!saved){
 			var ratio = Math.abs(this.vy / this.vx);
 			if ((this.vx < 0 && this.vy < 0) || (this.vx > 0 && this.vy > 0)){
-				context.translate(this.x,this.y);
-				context.rotate(Math.PI / 4 * ratio * 20);
-				context.translate(-this.x,-this.y);
+				cx.translate(this.x,this.y);
+				cx.rotate(Math.PI / 4 * ratio * 20);
+				cx.translate(-this.x,-this.y);
 			} else if ((this.vx < 0 && this.vy > 0) || (this.vx > 0 && this.vy < 0)){
-				context.translate(this.x,this.y);
-				context.rotate(-Math.PI / 4 * ratio * 20);
-				context.translate(-this.x,-this.y);
+				cx.translate(this.x,this.y);
+				cx.rotate(-Math.PI / 4 * ratio * 20);
+				cx.translate(-this.x,-this.y);
 			}
 		} else {
 			var ratio = Math.abs(S_BALL.VY / S_BALL.VX);
 			if ((S_BALL.VX < 0 && S_BALL.VY < 0) || (S_BALL.VX > 0 && S_BALL.VY > 0 )){
-				context.translate(S_BALL.X,S_BALL.Y);
-				context.rotate(Math.PI / 4 * ratio * 20);
-				context.translate(-S_BALL.X,-S_BALL.Y);
+				cx.translate(S_BALL.X,S_BALL.Y);
+				cx.rotate(Math.PI / 4 * ratio * 20);
+				cx.translate(-S_BALL.X,-S_BALL.Y);
 			} else if ((S_BALL.VX < 0 && S_BALL.VY > 0) || (S_BALL.VX > 0 && S_BALL.VY < 0)){
-				context.translate(S_BALL.X,S_BALL.Y);
-				context.rotate(-Math.PI / 4 * ratio * 20);
-				context.translate(-S_BALL.X,-S_BALL.Y);
+				cx.translate(S_BALL.X,S_BALL.Y);
+				cx.rotate(-Math.PI / 4 * ratio * 20);
+				cx.translate(-S_BALL.X,-S_BALL.Y);
 			}
 		}
 	}

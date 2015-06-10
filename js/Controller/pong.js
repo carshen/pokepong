@@ -14,14 +14,13 @@ function initGame() {
 	g.player = new Player(PADDLE.ORIG_X, PADDLE.ORIG_Y);
 	g.opponent = new Opponent(OPPONENT_X-PADDLE.WIDTH, PADDLE.ORIG_Y);
 
-	var canv = document.getElementById("game-canvas");
-	var context = canv.getContext("2d");
-
 	// TODO: handle the namespacing
 	playerui = new PlayerUI();
 	opponentui = new OpponentUI();
 	ballui = new BallUI();
-	objRend = new ObjectsRenderer(canv, context, playerui, opponentui, ballui);
+	
+	objRend = new ObjectsRenderer(playerui, opponentui, ballui);
+	uiRendr = new UIRenderer();
 
 	addUIControls();
 	addGamePlayControls();
@@ -50,12 +49,11 @@ function update(){
 // draws everything
 function render(){
 	if (!started) return; //so it won't render after game is over
-	var canv = document.getElementById("game-canvas");
-	var context = canv.getContext("2d");
-	context.clearRect(0,0,CANVAS_WIDTH,CANVAS_HEIGHT);
-	drawBackground();
+	var cx = UI.context;
+	cx.clearRect(0,0,CANVAS_WIDTH,CANVAS_HEIGHT);
+	
+	uiRendr.render();
 	objRend.render();
-	renderScore();
 }
 
 // motherfucking game loop
@@ -116,24 +114,4 @@ function updateMovement(){
 	g.pball.moveY();
 	g.player.updateMovement();
 	g.opponent.updateMovement();
-}
-
-// renders the score
-function renderScore(){
-	var canvas = document.getElementById("game-canvas");
-	var context = canvas.getContext("2d");
-	context.save();
-	context.fillStyle = "blue";
-	context.font = "bold 30px Inconsolata";
-	context.fillText(g.opponent.score, 250 , 500);
-	context.fillText(g.player.score, 750, 500);
-	context.restore();
-}
-
-// draws the game background
-function drawBackground(){
-	var canv = document.getElementById("game-canvas");
-	var context = canv.getContext("2d");
-	var img = document.getElementById("background-img");
-	context.drawImage(img,0,0)
 }
