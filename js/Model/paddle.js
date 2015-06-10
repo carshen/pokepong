@@ -1,20 +1,25 @@
-function Paddle(x,y) {
-	this.score = 0;
-	this.x = x;
-	this.y = y;
-	this.vx = 0;
-	this.vy = 0;
-	this.len = PADDLE.LENGTH;
-	this.width = PADDLE.WIDTH;
+Paddle = function(x,y) {};
 
+Paddle.prototype = Object.create(Object.prototype, {
+	len: {
+		value: PADDLE.LENGTH,
+	},
+	width: {
+		value: PADDLE.WIDTH,
+	},
 	// just moves the paddle
-	this.moveY = function(){
-		this.y = this.y + this.vy;
-	}
-
+	moveY: {
+		value: function() {
+				this.y = this.y + this.vy;
+			},
+	},
 	// ensures paddle doesn't go outside the canvas screen
-	this.stayInBound = function(){
-		if (this.y < 0) this.y = 0;
-		if (this.y + PADDLE.LENGTH > CANVAS_HEIGHT) this.y = CANVAS_HEIGHT - PADDLE.LENGTH;
+	stayInBound: {
+		value: function() {
+				if (this.y < 0) this.y = 0;
+				if (this.y + PADDLE.LENGTH > CANVAS_HEIGHT) this.y = CANVAS_HEIGHT - PADDLE.LENGTH;
+			},
 	}
-}
+});
+
+Paddle.prototype.constructor = Paddle;
