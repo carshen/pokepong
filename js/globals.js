@@ -1,7 +1,7 @@
 // GENERAL
 var FPS = 80;
-var CANVAS_HEIGHT = $("#game-canvas").attr('height');
-var CANVAS_WIDTH = $("#game-canvas").attr('width');
+var CANVAS_HEIGHT = document.getElementById("game-canvas").getAttribute('height');
+var CANVAS_WIDTH = document.getElementById("game-canvas").getAttribute('width');
 var started = false;
 var saved = false;
 var WINS_NEEDED = 10; // orig 10

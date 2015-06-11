@@ -4,13 +4,12 @@
     <link href="css/pong.css" type="text/css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css'>
   </head>
-  <body>
+  <body onload="runGame()">
     <div id="canvas-container">
       <canvas id="game-canvas" width="1000" height="600">Your browser does not support HTML5.</canvas>
     </div>
     <img id="background-img" src="res/bg.png">
     <br/>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="js/globals.js"></script>
     <script src="js/View/uiGlobals.js"></script>
     <script src="js/Model/modelGlobals.js"></script>

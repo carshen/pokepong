@@ -1,8 +1,4 @@
-$(function(){
-  runGame();
-})
-
-// what its function name says
+// Call this to play the game.
 function runGame() {
   initGame();
   startScreen();
