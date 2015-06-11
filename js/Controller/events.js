@@ -40,13 +40,13 @@ function addUIControls(){
     switch (e.keyCode){
       case 32: //spacebar to begin
         if (!started){ // --- start the game
-          resetToDefault();
+          g.resetToDefault();
           g.opponent.score = 0;
           g.player.score = 0;
           gameLoop();
           started = true;
         } else if (!saved){ // restart the game
-          resetToDefault();
+          g.resetToDefault();
           g.opponent.score = 0;
           g.player.score = 0;
         }
