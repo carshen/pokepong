@@ -1,4 +1,4 @@
-Paddle = function(x,y) {};
+function Paddle(x,y) {}
 
 Paddle.prototype = Object.create(Object.prototype, {
   len: {

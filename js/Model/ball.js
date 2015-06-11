@@ -1,9 +1,10 @@
-var PBall = function(x,y) {
+function PBall(x,y) {
   this.x = x;
   this.y = y;
   this.vx = BALL.ORIG_VX;
   this.vy = BALL.ORIG_VY;
 }
+
 PBall.prototype = Object.create(Object.prototype, {
   moveX: {
     value: function() {

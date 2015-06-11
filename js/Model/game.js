@@ -1,8 +1,8 @@
-var Game = function(){
+function Game() {
   this.pball = new PBall(BALL.ORIG_X, BALL.ORIG_Y);
   this.player = new Player(PADDLE.ORIG_X, PADDLE.ORIG_Y);
   this.opponent = new Opponent(OPPONENT_X-PADDLE.WIDTH, PADDLE.ORIG_Y);
-};
+}
 
 Game.prototype = Object.create(Object.prototype, {
   update: {

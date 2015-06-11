@@ -1,11 +1,11 @@
-var Opponent = function(x,y) {
+function Opponent (x,y) {
   // inheritance
   this.x = x;
   this.y = y;
   this.vx = 0;
   this.vy = 0;
   this.score = 0;
-};
+}
 
 Opponent.prototype = Object.create(Paddle.prototype, {
   // state of the art AI
